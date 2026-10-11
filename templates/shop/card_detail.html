@@ -1,0 +1,163 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ card.name }} — Card Heroes{% endblock %}
+
+{% block body_class %}{% if card.franchise == 'OP' %}page-onepiece{% else %}page-disney{% endif %}{% endblock %}
+
+{% block content %}
+<div class="detail">
+  <div class="art card-3d" id="card3d">
+    <div class="card-3d-inner">
+      <div class="card-face card-face-front">
+        {% if card.image %}<img src="{{ card.image.url }}" alt="{{ card.name }}" id="card-front-src">{% endif %}
+      </div>
+      {% if card.back_image %}
+      <div class="card-face card-face-back">
+        <img src="{{ card.back_image.url }}" alt="{{ card.name }} — {% translate 'back' %}" id="card-back-src">
+      </div>
+      {% endif %}
+    </div>
+    {% if card.back_image %}
+    <button type="button" class="card-tool card-tool-flip" id="flip-btn" aria-label="{% translate 'Flip card to see the back' %}" title="{% translate 'Flip card' %}">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+    </button>
+    {% endif %}
+    {% if card.image %}
+    <button type="button" class="card-tool card-tool-zoom" id="zoom-btn" aria-label="{% translate 'Magnify card image' %}" title="{% translate 'Magnify' %}">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+    </button>
+    {% endif %}
+  </div>
+  <div>
+    <h1>{{ card.name }}</h1>
+    <div class="meta">
+      <span class="badge {% if card.franchise == 'OP' %}badge-op{% else %}badge-di{% endif %}">{{ card.get_franchise_display }}</span>
+      <span class="badge badge-rarity">{{ card.get_rarity_display }}</span>
+    </div>
+    <p class="rating-row rating-row-lg">
+      <span class="stars"><span class="stars-fill" style="width: {% widthratio card.avg_rating|default:0 5 100 %}%">★★★★★</span>★★★★★</span>
+      {% if card.num_reviews %}
+        <span class="rating-count">{{ card.avg_rating|floatformat:1 }} · {% blocktranslate count counter=card.num_reviews %}{{ counter }} review{% plural %}{{ counter }} reviews{% endblocktranslate %}</span>
+      {% else %}
+        <span class="rating-count">{% translate "No reviews yet" %}</span>
+      {% endif %}
+    </p>
+    <p class="price">${{ card.price }}</p>
+    <p class="desc">{{ card.description }}</p>
+    <table>
+      {% if card.card_set %}<tr><td>{% translate "Set" %}</td><td>{{ card.card_set }}</td></tr>{% endif %}
+      {% if card.card_number %}<tr><td>{% translate "Card #" %}</td><td>{{ card.card_number }}</td></tr>{% endif %}
+      <tr><td>{% translate "Condition" %}</td><td>{{ card.condition }}</td></tr>
+      <tr><td>{% translate "Stock" %}</td><td>{% if card.in_stock %}{% blocktranslate with n=card.stock %}{{ n }} available{% endblocktranslate %}{% else %}{% translate "Sold out" %}{% endif %}</td></tr>
+    </table>
+    {% if card.in_stock %}
+      <form action="{% url 'shop:cart_add' card.pk %}" method="post" class="qty-row">
+        {% csrf_token %}
+        <input type="number" name="quantity" value="1" min="1" max="{{ card.stock }}">
+        <input type="hidden" name="override" value="">
+        <button class="btn btn-red" type="submit">{% translate "Add to Cart" %}</button>
+      </form>
+    {% endif %}
+  </div>
+</div>
+
+<h2 class="section-title">{% translate "Reviews" %}</h2>
+<div class="panel reviews-panel">
+  {% if user.is_authenticated %}
+    <form method="post" action="{% url 'shop:review_submit' card.slug %}" class="review-form">
+      {% csrf_token %}
+      <h3>{% if my_review %}{% translate "Update your review" %}{% else %}{% translate "Rate this card" %}{% endif %}</h3>
+      <div class="star-input">
+        {% for i in "54321" %}
+          <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}" required
+                 {% if my_review and my_review.rating|stringformat:"s" == i %}checked{% endif %}>
+          <label for="star{{ i }}" title="{{ i }} ★">★</label>
+        {% endfor %}
+      </div>
+      <textarea name="comment" rows="3" maxlength="2000"
+                placeholder="{% translate 'Share your thoughts on this card (optional)...' %}">{% if my_review %}{{ my_review.comment }}{% endif %}</textarea>
+      <div class="review-form-actions">
+        <button class="btn" type="submit">{% if my_review %}{% translate "Update review" %}{% else %}{% translate "Post review" %}{% endif %}</button>
+        {% if my_review %}
+          <button class="btn btn-ghost" type="submit" form="review-delete-form">{% translate "Delete my review" %}</button>
+        {% endif %}
+      </div>
+    </form>
+    {% if my_review %}
+      <form id="review-delete-form" method="post" action="{% url 'shop:review_delete' card.slug %}"
+            onsubmit="return confirm('{% filter escapejs %}{% translate 'Delete your review of this card?' %}{% endfilter %}');">{% csrf_token %}</form>
+    {% endif %}
+  {% else %}
+    <p class="review-login-hint"><a href="{% url 'shop:login' %}?next={{ request.path|urlencode }}">{% translate "Log in" %}</a> {% translate "to rate this card and leave a comment." %}</p>
+  {% endif %}
+
+  {% for review in reviews %}
+    <div class="review {% if user.is_authenticated and review.user_id == user.pk %}review-mine{% endif %}">
+      <div class="review-head">
+        <span class="review-avatar">{{ review.user.username|first|upper }}</span>
+        <strong>{{ review.user.username }}</strong>
+        <span class="stars stars-sm"><span class="stars-fill" style="width: {% widthratio review.rating 5 100 %}%">★★★★★</span>★★★★★</span>
+        <span class="review-date">{{ review.created_at|date:"M j, Y" }}</span>
+      </div>
+      {% if review.comment %}<p class="review-body">{{ review.comment|linebreaksbr }}</p>{% endif %}
+    </div>
+  {% empty %}
+    <p class="dash-empty">{% translate "No reviews yet — be the first to rate this treasure!" %}</p>
+  {% endfor %}
+</div>
+
+{% if related %}
+  <h2 class="section-title">{% blocktranslate with franchise=card.get_franchise_display %}More from {{ franchise }}{% endblocktranslate %}</h2>
+  <div class="card-grid">
+    {% for card in related %}{% include 'shop/_card.html' %}{% endfor %}
+  </div>
+{% endif %}
+
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="{% translate 'Close' %}">✕</button>
+  <img id="lightbox-img" alt="{{ card.name }}">
+</div>
+
+<script>
+  (function () {
+    var card3d = document.getElementById('card3d');
+    var flipBtn = document.getElementById('flip-btn');
+    var zoomBtn = document.getElementById('zoom-btn');
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+    var closeBtn = document.getElementById('lightbox-close');
+    var front = document.getElementById('card-front-src');
+    var back = document.getElementById('card-back-src');
+
+    if (flipBtn) {
+      flipBtn.addEventListener('click', function () {
+        card3d.classList.toggle('flipped');
+      });
+    }
+
+    if (zoomBtn) {
+      zoomBtn.addEventListener('click', function () {
+        var showingBack = card3d.classList.contains('flipped');
+        var src = showingBack && back ? back.src : (front ? front.src : null);
+        if (!src) return;
+        lightboxImg.src = src;
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      document.body.style.overflow = '';
+    }
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+  })();
+</script>
+{% endblock %}

@@ -1,0 +1,808 @@
+# Greek translation for Card Heroes.
+# Edit the msgstr lines, then run:  python scripts/compile_translations.py
+msgid ""
+msgstr ""
+"Project-Id-Version: Card Heroes\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Page not found"
+msgstr "Η σελίδα δεν βρέθηκε"
+
+msgid "This treasure map leads nowhere. The page you're looking for doesn't exist."
+msgstr "Αυτός ο χάρτης θησαυρού δεν οδηγεί πουθενά. Η σελίδα που ψάχνεις δεν υπάρχει."
+
+msgid "Back to Home"
+msgstr "Πίσω στην αρχική"
+
+msgid "Sold out"
+msgstr "Εξαντλήθηκε"
+
+msgid "Card Heroes — Collector's Cards"
+msgstr "Card Heroes — Συλλεκτικές κάρτες"
+
+msgid "Card Heroes logo"
+msgstr "Λογότυπο Card Heroes"
+
+msgid "All Cards"
+msgstr "Όλες οι κάρτες"
+
+msgctxt "navbar"
+msgid "All Cards"
+msgstr "Κάρτες"
+
+msgid "FAQ"
+msgstr "Συχνές ερωτήσεις"
+
+msgid "Profile"
+msgstr "Προφίλ"
+
+msgid "Dashboard"
+msgstr "Πίνακας ελέγχου"
+
+msgid "Ahoy,"
+msgstr "Γεια σου,"
+
+msgid "Orders"
+msgstr "Παραγγελίες"
+
+msgid "Log out"
+msgstr "Αποσύνδεση"
+
+msgid "Log in"
+msgstr "Σύνδεση"
+
+msgid "Register"
+msgstr "Εγγραφή"
+
+msgid "Cart"
+msgstr "Καλάθι"
+
+msgid "Toggle light/dark mode"
+msgstr "Εναλλαγή φωτεινού/σκοτεινού θέματος"
+
+msgid "Menu"
+msgstr "Μενού"
+
+msgid "Legendary collector's cards from the Grand Line to the Magic Kingdom. Demo store — no real payments."
+msgstr "Θρυλικές συλλεκτικές κάρτες από τη Grand Line ως το Μαγικό Βασίλειο. Δοκιμαστικό κατάστημα — χωρίς πραγματικές πληρωμές."
+
+msgid "back"
+msgstr "πίσω όψη"
+
+msgid "Flip card to see the back"
+msgstr "Γύρισε την κάρτα για να δεις την πίσω όψη"
+
+msgid "Flip card"
+msgstr "Γύρισμα κάρτας"
+
+msgid "Magnify card image"
+msgstr "Μεγέθυνση εικόνας κάρτας"
+
+msgid "Magnify"
+msgstr "Μεγέθυνση"
+
+msgid "No reviews yet"
+msgstr "Καμία αξιολόγηση ακόμα"
+
+msgid "Set"
+msgstr "Σετ"
+
+msgid "Card #"
+msgstr "Αρ. κάρτας"
+
+msgid "Condition"
+msgstr "Κατάσταση"
+
+msgid "Stock"
+msgstr "Απόθεμα"
+
+msgid "Add to Cart"
+msgstr "Στο καλάθι"
+
+msgid "Reviews"
+msgstr "Αξιολογήσεις"
+
+msgid "Update your review"
+msgstr "Ενημέρωσε την αξιολόγησή σου"
+
+msgid "Rate this card"
+msgstr "Βαθμολόγησε αυτή την κάρτα"
+
+msgid "Share your thoughts on this card (optional)..."
+msgstr "Πες μας τη γνώμη σου για την κάρτα (προαιρετικό)..."
+
+msgid "Update review"
+msgstr "Ενημέρωση αξιολόγησης"
+
+msgid "Post review"
+msgstr "Δημοσίευση αξιολόγησης"
+
+msgid "Delete my review"
+msgstr "Διαγραφή της αξιολόγησής μου"
+
+msgid "Delete your review of this card?"
+msgstr "Να διαγραφεί η αξιολόγησή σου για αυτή την κάρτα;"
+
+msgid "to rate this card and leave a comment."
+msgstr "για να βαθμολογήσεις την κάρτα και να αφήσεις σχόλιο."
+
+msgid "No reviews yet — be the first to rate this treasure!"
+msgstr "Καμία αξιολόγηση ακόμα — γίνε ο πρώτος που θα βαθμολογήσει αυτόν τον θησαυρό!"
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#, python-format
+msgid "%(n)s available"
+msgstr "%(n)s διαθέσιμα"
+
+#, python-format
+msgid "More from %(franchise)s"
+msgstr "Περισσότερα από %(franchise)s"
+
+msgid "Search"
+msgstr "Αναζήτηση"
+
+msgid "Name, set, or description..."
+msgstr "Όνομα, σετ ή περιγραφή..."
+
+msgid "Rarity"
+msgstr "Σπανιότητα"
+
+msgid "All"
+msgstr "Όλα"
+
+msgid "Price ($)"
+msgstr "Τιμή ($)"
+
+msgid "Min"
+msgstr "Από"
+
+msgid "Max"
+msgstr "Έως"
+
+msgid "Sort by"
+msgstr "Ταξινόμηση"
+
+msgid "In stock only"
+msgstr "Μόνο διαθέσιμα"
+
+msgid "Filter"
+msgstr "Φιλτράρισμα"
+
+msgid "Clear"
+msgstr "Καθαρισμός"
+
+msgid "No cards match your filters."
+msgstr "Καμία κάρτα δεν ταιριάζει με τα φίλτρα σου."
+
+msgid "Clear filters"
+msgstr "Καθαρισμός φίλτρων"
+
+msgid "Your Cart"
+msgstr "Το καλάθι σου"
+
+msgid "Your Treasure Chest"
+msgstr "Το σεντούκι του θησαυρού σου"
+
+msgid "Card"
+msgstr "Κάρτα"
+
+msgid "Qty"
+msgstr "Ποσ."
+
+msgid "Price"
+msgstr "Τιμή"
+
+msgid "Subtotal"
+msgstr "Μερικό σύνολο"
+
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+msgid "Total:"
+msgstr "Σύνολο:"
+
+msgid "Keep Shopping"
+msgstr "Συνέχεια αγορών"
+
+msgid "Checkout"
+msgstr "Ολοκλήρωση αγοράς"
+
+msgid "Your chest is empty. Time to hunt some treasure!"
+msgstr "Το σεντούκι σου είναι άδειο. Ώρα για κυνήγι θησαυρού!"
+
+msgid "Browse Cards"
+msgstr "Δες τις κάρτες"
+
+msgid "Demo checkout — no real payment is processed."
+msgstr "Δοκιμαστική αγορά — δεν γίνεται καμία πραγματική χρέωση."
+
+msgid "Order Summary"
+msgstr "Σύνοψη παραγγελίας"
+
+msgid "Total"
+msgstr "Σύνολο"
+
+msgid "Place Order"
+msgstr "Υποβολή παραγγελίας"
+
+msgid "Captain's Dashboard"
+msgstr "Πίνακας ελέγχου καπετάνιου"
+
+msgid "Google Drive is not configured on this server — uploaded images will be lost on the next deploy. Set the GDRIVE_* environment variables (see DEPLOY.md)."
+msgstr "Το Google Drive δεν έχει ρυθμιστεί σε αυτόν τον server — οι εικόνες που ανεβαίνουν θα χαθούν στο επόμενο deploy. Όρισε τις μεταβλητές περιβάλλοντος GDRIVE_* (δες το DEPLOY.md)."
+
+msgid "Captain's dashboard"
+msgstr "Πίνακας ελέγχου καπετάνιου"
+
+msgid "Add new card"
+msgstr "Νέα κάρτα"
+
+msgid "Manage cards"
+msgstr "Διαχείριση καρτών"
+
+msgid "Manage crew"
+msgstr "Διαχείριση πληρώματος"
+
+msgid "Django admin"
+msgstr "Django admin"
+
+msgid "Revenue"
+msgstr "Έσοδα"
+
+msgid "To ship"
+msgstr "Προς αποστολή"
+
+msgid "Shipped"
+msgstr "Απεστάλη"
+
+msgid "Cards listed"
+msgstr "Κάρτες σε πώληση"
+
+msgid "Units in stock"
+msgstr "Τεμάχια σε απόθεμα"
+
+msgid "Recent orders"
+msgstr "Πρόσφατες παραγγελίες"
+
+msgid "No orders yet. The seas are quiet."
+msgstr "Καμία παραγγελία ακόμα. Οι θάλασσες είναι ήσυχες."
+
+msgid "Top sellers"
+msgstr "Δημοφιλέστερες"
+
+msgid "No sales yet."
+msgstr "Καμία πώληση ακόμα."
+
+msgid "Low stock alerts"
+msgstr "Ειδοποιήσεις χαμηλού αποθέματος"
+
+msgid "SOLD OUT"
+msgstr "ΕΞΑΝΤΛΗΘΗΚΕ"
+
+msgid "All cards well stocked."
+msgstr "Όλες οι κάρτες έχουν επαρκές απόθεμα."
+
+#, python-format
+msgid "%(n)s sold"
+msgstr "%(n)s πωλήσεις"
+
+#, python-format
+msgid "%(n)s left"
+msgstr "απομένουν %(n)s"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "Add Card"
+msgstr "Προσθήκη κάρτας"
+
+msgid "Edit card"
+msgstr "Επεξεργασία κάρτας"
+
+msgid "Back to vault"
+msgstr "Πίσω στο θησαυροφυλάκιο"
+
+msgid "Save changes"
+msgstr "Αποθήκευση αλλαγών"
+
+msgid "Add to vault"
+msgstr "Προσθήκη στο θησαυροφυλάκιο"
+
+msgid "Delete card"
+msgstr "Διαγραφή κάρτας"
+
+msgid "Current art"
+msgstr "Τρέχουσα εικόνα"
+
+#, python-format
+msgid "Remove %(name)s from the vault? This cannot be undone."
+msgstr "Να αφαιρεθεί η κάρτα %(name)s από το θησαυροφυλάκιο; Η ενέργεια δεν αναιρείται."
+
+msgid "Manage Cards"
+msgstr "Διαχείριση καρτών"
+
+msgid "Card vault"
+msgstr "Θησαυροφυλάκιο καρτών"
+
+msgid "Search by name, set, or number..."
+msgstr "Αναζήτηση με όνομα, σετ ή αριθμό..."
+
+msgid "Franchise"
+msgstr "Σειρά"
+
+msgid "Featured"
+msgstr "Προβεβλημένη"
+
+msgid "No cards match your search."
+msgstr "Καμία κάρτα δεν ταιριάζει με την αναζήτησή σου."
+
+msgid "Add Account"
+msgstr "Νέος λογαριασμός"
+
+msgid "Edit account:"
+msgstr "Επεξεργασία λογαριασμού:"
+
+msgid "Add account"
+msgstr "Νέος λογαριασμός"
+
+msgid "Back to crew"
+msgstr "Πίσω στο πλήρωμα"
+
+msgid "Create account"
+msgstr "Δημιουργία λογαριασμού"
+
+msgid "No email on file"
+msgstr "Δεν υπάρχει καταχωρημένο email"
+
+msgid "Send password reset email"
+msgstr "Αποστολή email επαναφοράς κωδικού"
+
+msgid "Delete account"
+msgstr "Διαγραφή λογαριασμού"
+
+msgid "No orders from this account."
+msgstr "Καμία παραγγελία από αυτόν τον λογαριασμό."
+
+#, python-format
+msgid "Delete account %(name)s? This cannot be undone."
+msgstr "Να διαγραφεί ο λογαριασμός %(name)s; Η ενέργεια δεν αναιρείται."
+
+msgid "Manage Crew"
+msgstr "Διαχείριση πληρώματος"
+
+msgid "Crew manifest"
+msgstr "Κατάλογος πληρώματος"
+
+msgid "Search by username or email..."
+msgstr "Αναζήτηση με όνομα χρήστη ή email..."
+
+msgid "User"
+msgstr "Χρήστης"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Role"
+msgstr "Ρόλος"
+
+msgid "Status"
+msgstr "Κατάσταση"
+
+msgid "Joined"
+msgstr "Εγγραφή"
+
+msgid "You"
+msgstr "Εσύ"
+
+msgid "Superuser"
+msgstr "Υπερδιαχειριστής"
+
+msgid "Staff"
+msgstr "Προσωπικό"
+
+msgid "Customer"
+msgstr "Πελάτης"
+
+msgid "Active"
+msgstr "Ενεργός"
+
+msgid "Deactivated"
+msgstr "Απενεργοποιημένος"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "No accounts match your search."
+msgstr "Κανένας λογαριασμός δεν ταιριάζει με την αναζήτησή σου."
+
+#, python-format
+msgid "Delete account %(name)s? Their orders are kept, but this cannot be undone."
+msgstr "Να διαγραφεί ο λογαριασμός %(name)s; Οι παραγγελίες του θα διατηρηθούν, αλλά η ενέργεια δεν αναιρείται."
+
+msgid "Frequently asked questions"
+msgstr "Συχνές ερωτήσεις"
+
+msgid "Are your cards authentic?"
+msgstr "Είναι γνήσιες οι κάρτες σας;"
+
+msgid "Every card in our vault is verified by our crew before it's listed. We source from sealed product, trusted collectors, and graded lots — no counterfeits make it past the lookout. If a card ever turns out to be inauthentic, you get a full refund, no questions asked."
+msgstr "Κάθε κάρτα στο θησαυροφυλάκιό μας ελέγχεται από το πλήρωμά μας πριν μπει σε πώληση. Προμηθευόμαστε από σφραγισμένα προϊόντα, αξιόπιστους συλλέκτες και βαθμολογημένες παρτίδες — καμία πλαστή κάρτα δεν ξεφεύγει από τη σκοπιά. Αν ποτέ μια κάρτα αποδειχθεί μη γνήσια, παίρνεις πίσω όλα σου τα χρήματα, χωρίς ερωτήσεις."
+
+msgid "What do the rarity levels mean?"
+msgstr "Τι σημαίνουν τα επίπεδα σπανιότητας;"
+
+msgid "From most common to most legendary: Common, Uncommon, Rare, Super Rare, Secret Rare, and Legendary. Secret Rares and Legendaries are the true grail cards — printed in tiny quantities, often with alternate art or special foil treatments. Every card's rarity is shown on its badge."
+msgstr "Από την πιο κοινή ως την πιο θρυλική: Κοινή, Ασυνήθιστη, Σπάνια, Πολύ σπάνια, Μυστική σπάνια και Θρυλική. Οι Μυστικές σπάνιες και οι Θρυλικές είναι οι πραγματικοί θησαυροί — τυπώνονται σε ελάχιστα αντίτυπα, συχνά με εναλλακτικό σχέδιο ή ειδικό foil. Η σπανιότητα κάθε κάρτας φαίνεται στο σήμα της."
+
+msgid "What condition are the cards in?"
+msgstr "Σε τι κατάσταση είναι οι κάρτες;"
+
+msgid "Each listing states its condition — most of our stock is Near Mint. Cards are inspected under bright light for whitening, scratches, and centering before listing. Anything below Near Mint is clearly marked with photos of the actual card you'll receive."
+msgstr "Κάθε αγγελία αναφέρει την κατάσταση της κάρτας — το μεγαλύτερο μέρος του αποθέματός μας είναι Near Mint. Οι κάρτες ελέγχονται κάτω από δυνατό φως για φθορές στις άκρες, γρατζουνιές και κεντράρισμα πριν μπουν σε πώληση. Ό,τι είναι κάτω από Near Mint επισημαίνεται καθαρά, με φωτογραφίες της ίδιας της κάρτας που θα παραλάβεις."
+
+msgid "How are cards shipped and protected?"
+msgstr "Πώς αποστέλλονται και προστατεύονται οι κάρτες;"
+
+msgid "Every card ships in a penny sleeve inside a top loader, sealed in a team bag, then packed between rigid mailers. Orders over $100 ship with tracking and insurance included. Your treasure survives the voyage — that's a promise."
+msgstr "Κάθε κάρτα αποστέλλεται σε θήκη (penny sleeve) μέσα σε σκληρή θήκη (top loader), σφραγισμένη σε team bag και συσκευασμένη ανάμεσα σε άκαμπτους φακέλους. Οι παραγγελίες άνω των $100 αποστέλλονται με αριθμό παρακολούθησης και ασφάλιση. Ο θησαυρός σου θα επιβιώσει από το ταξίδι — σου το υποσχόμαστε."
+
+msgid "How long does delivery take?"
+msgstr "Πόσο διαρκεί η παράδοση;"
+
+msgid "Orders are dispatched within 1–2 business days. Domestic delivery typically takes 3–5 business days; international voyages take 7–21 days depending on how rough the seas (customs) are. You'll receive a tracking number as soon as your order sets sail."
+msgstr "Οι παραγγελίες αποστέλλονται μέσα σε 1–2 εργάσιμες ημέρες. Η παράδοση εντός χώρας διαρκεί συνήθως 3–5 εργάσιμες· τα διεθνή ταξίδια διαρκούν 7–21 ημέρες, ανάλογα με το πόσο φουρτουνιασμένες είναι οι θάλασσες (τελωνεία). Θα λάβεις αριθμό παρακολούθησης μόλις η παραγγελία σου σαλπάρει."
+
+msgid "Can I return a card?"
+msgstr "Μπορώ να επιστρέψω μια κάρτα;"
+
+msgid "Yes — within 14 days of delivery, as long as the card comes back in the same condition and sealed in its original protective packaging. Refunds are issued to your original payment method within 5 business days of us receiving the return."
+msgstr "Ναι — μέσα σε 14 ημέρες από την παράδοση, εφόσον η κάρτα επιστραφεί στην ίδια κατάσταση και σφραγισμένη στην αρχική προστατευτική συσκευασία. Η επιστροφή χρημάτων γίνεται στον αρχικό τρόπο πληρωμής μέσα σε 5 εργάσιμες ημέρες από τη στιγμή που θα λάβουμε την επιστροφή."
+
+msgid "Do you buy or trade cards?"
+msgstr "Αγοράζετε ή ανταλλάσσετε κάρτες;"
+
+msgid "We're always hunting for new treasure. If you have One Piece or Lorcana cards to sell or trade, contact us with photos and your asking price. Graded cards and sealed product get priority review from the captain himself."
+msgstr "Πάντα ψάχνουμε νέους θησαυρούς. Αν έχεις κάρτες One Piece ή Lorcana για πώληση ή ανταλλαγή, επικοινώνησε μαζί μας με φωτογραφίες και την τιμή που ζητάς. Οι βαθμολογημένες κάρτες και τα σφραγισμένα προϊόντα εξετάζονται κατά προτεραιότητα από τον ίδιο τον καπετάνιο."
+
+msgid "Is this a real store? Do payments work?"
+msgstr "Είναι πραγματικό κατάστημα; Λειτουργούν οι πληρωμές;"
+
+msgid "Card Heroes is currently a demo store — checkout works end to end, but no real payment is processed and nothing actually ships. Think of it as a test voyage before the real adventure begins."
+msgstr "Το Card Heroes είναι προς το παρόν δοκιμαστικό κατάστημα — η διαδικασία αγοράς λειτουργεί πλήρως, αλλά δεν γίνεται καμία πραγματική χρέωση και τίποτα δεν αποστέλλεται. Σκέψου το σαν ένα δοκιμαστικό ταξίδι πριν ξεκινήσει η πραγματική περιπέτεια."
+
+msgid "Set sail for treasure"
+msgstr "Ζήσε μια περιπέτεια"
+
+msgid "A world of <span>cards</span><br>and adventure<br>awaits."
+msgstr "Ένας κόσμος από <span>κάρτες</span><br>και περιπέτεια<br>σε περιμένει."
+
+msgid "Rare and legendary collector's cards from One Piece and Lorcana — hunted across the Grand Line, guarded like treasure, shipped to your door."
+msgstr "Σπάνιες και θρυλικές συλλεκτικές κάρτες One Piece και Lorcana — κυνηγημένες σε όλη τη Grand Line, φυλαγμένες σαν θησαυρός, σταλμένες ως την πόρτα σου."
+
+msgid "One Piece cards"
+msgstr "Κάρτες One Piece"
+
+msgid "Lorcana cards"
+msgstr "Κάρτες Lorcana"
+
+msgid "Welcome aboard"
+msgstr "Καλώς ήρθες στο πλοίο"
+
+msgid "A world of treasure<br>and adventure awaits."
+msgstr "Ένας κόσμος θησαυρών<br>και περιπέτειας σε περιμένει."
+
+msgid "Card Heroes is a haven for collectors — rare pulls from the Grand Line and timeless magic from the Kingdom, gathered in one vault."
+msgstr "Το Card Heroes είναι το λιμάνι των συλλεκτών — σπάνια ευρήματα από τη Grand Line και διαχρονική μαγεία από το Βασίλειο, μαζεμένα σε ένα θησαυροφυλάκιο."
+
+msgid "Build your very own collection with all of your favorite characters. Every card verified, sleeved, and ready for its next voyage."
+msgstr "Φτιάξε τη δική σου συλλογή με όλους τους αγαπημένους σου χαρακτήρες. Κάθε κάρτα ελεγμένη, σε θήκη και έτοιμη για το επόμενο ταξίδι της."
+
+msgid "Begin your adventure"
+msgstr "Ξεκίνα την περιπέτεια"
+
+msgid "Featured treasures"
+msgstr "Μην το χάσεις"
+
+msgid "New arrivals"
+msgstr "Νέες αφίξεις"
+
+msgid "No cards in stock yet — check back soon!"
+msgstr "Δεν υπάρχουν ακόμα κάρτες σε απόθεμα — έλα ξανά σύντομα!"
+
+msgid "Log In"
+msgstr "Σύνδεση"
+
+msgid "New here?"
+msgstr "Νέος εδώ;"
+
+msgid "Create an account"
+msgstr "Δημιούργησε λογαριασμό"
+
+msgid "My Orders"
+msgstr "Οι παραγγελίες μου"
+
+msgid "Order"
+msgstr "Παραγγελία"
+
+msgid "No orders yet."
+msgstr "Καμία παραγγελία ακόμα."
+
+msgid "Start collecting!"
+msgstr "Ξεκίνα τη συλλογή!"
+
+msgid "Order Confirmed"
+msgstr "Η παραγγελία επιβεβαιώθηκε"
+
+msgid "Items"
+msgstr "Είδη"
+
+#, python-format
+msgid "Order #%(id)s Confirmed!"
+msgstr "Η παραγγελία #%(id)s επιβεβαιώθηκε!"
+
+#, python-format
+msgid "Thanks, %(name)s! Your treasure is being prepared for its voyage."
+msgstr "Ευχαριστούμε, %(name)s! Ο θησαυρός σου ετοιμάζεται για το ταξίδι του."
+
+msgid "Password Changed"
+msgstr "Ο κωδικός άλλαξε"
+
+msgid "Password changed"
+msgstr "Ο κωδικός άλλαξε"
+
+msgid "Your new password is set. Welcome back aboard!"
+msgstr "Ο νέος σου κωδικός ορίστηκε. Καλώς ήρθες ξανά στο πλοίο!"
+
+msgid "Set New Password"
+msgstr "Νέος κωδικός"
+
+msgid "Set a new password"
+msgstr "Όρισε νέο κωδικό"
+
+msgid "Save new password"
+msgstr "Αποθήκευση νέου κωδικού"
+
+msgid "This reset link is invalid or has expired. Ask for a new one and try again."
+msgstr "Αυτός ο σύνδεσμος επαναφοράς δεν είναι έγκυρος ή έχει λήξει. Ζήτησε έναν καινούργιο και δοκίμασε ξανά."
+
+msgid "My Profile"
+msgstr "Το προφίλ μου"
+
+msgid "Crew member since"
+msgstr "Μέλος του πληρώματος από"
+
+msgid "Cards collected"
+msgstr "Κάρτες στη συλλογή"
+
+msgid "Total bounty spent"
+msgstr "Συνολική επικήρυξη που ξοδεύτηκε"
+
+msgid "Account details"
+msgstr "Στοιχεία λογαριασμού"
+
+msgid "No orders yet — your treasure log is empty."
+msgstr "Καμία παραγγελία ακόμα — το ημερολόγιο θησαυρών σου είναι άδειο."
+
+#, python-format
+msgid "View all %(n)s orders"
+msgstr "Δες και τις %(n)s παραγγελίες"
+
+msgid "Join the Crew"
+msgstr "Γίνε μέλος του πληρώματος"
+
+msgid "Already a member?"
+msgstr "Είσαι ήδη μέλος;"
+
+msgid "English"
+msgstr "Αγγλικά"
+
+msgid "Greek"
+msgstr "Ελληνικά"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "Card number"
+msgstr "Αριθμός κάρτας"
+
+msgid "Description"
+msgstr "Περιγραφή"
+
+msgid "Front image"
+msgstr "Εικόνα μπροστινής όψης"
+
+msgid "Back image"
+msgstr "Εικόνα πίσω όψης"
+
+msgid "Featured on the home page"
+msgstr "Προβολή στην αρχική σελίδα"
+
+msgid "Set / collection the card belongs to"
+msgstr "Σετ / συλλογή στην οποία ανήκει η κάρτα"
+
+msgid "The back side of the card"
+msgstr "Η πίσω όψη της κάρτας"
+
+msgid "Full name"
+msgstr "Ονοματεπώνυμο"
+
+msgid "Address"
+msgstr "Διεύθυνση"
+
+msgid "City"
+msgstr "Πόλη"
+
+msgid "Postal code"
+msgstr "Ταχυδρομικός κώδικας"
+
+msgid "Country"
+msgstr "Χώρα"
+
+msgid "Staff (can use the dashboard)"
+msgstr "Προσωπικό (έχει πρόσβαση στον πίνακα ελέγχου)"
+
+msgid "Superuser (full control)"
+msgstr "Υπερδιαχειριστής (πλήρης έλεγχος)"
+
+msgid "Active (can log in)"
+msgstr "Ενεργός (μπορεί να συνδεθεί)"
+
+msgid "Staff — dashboard access"
+msgstr "Προσωπικό — πρόσβαση στον πίνακα ελέγχου"
+
+msgid "Superuser — full control"
+msgstr "Υπερδιαχειριστής — πλήρης έλεγχος"
+
+msgid "Common"
+msgstr "Κοινή"
+
+msgid "Uncommon"
+msgstr "Ασυνήθιστη"
+
+msgid "Rare"
+msgstr "Σπάνια"
+
+msgid "Super Rare"
+msgstr "Πολύ σπάνια"
+
+msgid "Secret Rare"
+msgstr "Μυστική σπάνια"
+
+msgid "Legendary"
+msgstr "Θρυλική"
+
+msgid "Pending"
+msgstr "Σε αναμονή"
+
+msgid "Paid"
+msgstr "Πληρώθηκε"
+
+msgid "Cancelled"
+msgstr "Ακυρώθηκε"
+
+msgid "Newest first"
+msgstr "Νεότερες πρώτα"
+
+msgid "Price: low to high"
+msgstr "Τιμή: χαμηλή προς υψηλή"
+
+msgid "Price: high to low"
+msgstr "Τιμή: υψηλή προς χαμηλή"
+
+msgid "Best rated"
+msgstr "Καλύτερη βαθμολογία"
+
+msgid "Name A–Z"
+msgstr "Όνομα Α–Ω"
+
+msgid "Cards"
+msgstr "Κάρτες"
+
+msgid "Pick a star rating between 1 and 5."
+msgstr "Διάλεξε βαθμολογία από 1 έως 5 αστέρια."
+
+msgid "Review posted. Thanks, nakama!"
+msgstr "Η αξιολόγηση δημοσιεύτηκε. Ευχαριστούμε, nakama!"
+
+msgid "Your review has been updated."
+msgstr "Η αξιολόγησή σου ενημερώθηκε."
+
+msgid "Your review has been removed."
+msgstr "Η αξιολόγησή σου αφαιρέθηκε."
+
+#, python-format
+msgid "\"%(name)s\" is sold out."
+msgstr "Η κάρτα «%(name)s» έχει εξαντληθεί."
+
+#, python-format
+msgid "\"%(name)s\" added to your cart."
+msgstr "Η κάρτα «%(name)s» προστέθηκε στο καλάθι σου."
+
+msgid "Your cart is empty."
+msgstr "Το καλάθι σου είναι άδειο."
+
+#, python-format
+msgid "Not enough stock left for: %(cards)s. Please update your cart."
+msgstr "Δεν υπάρχει αρκετό απόθεμα για: %(cards)s. Ενημέρωσε το καλάθι σου."
+
+#, python-format
+msgid "Welcome aboard, %(name)s!"
+msgstr "Καλώς ήρθες στο πλοίο, %(name)s!"
+
+msgid "Your profile has been updated."
+msgstr "Το προφίλ σου ενημερώθηκε."
+
+#, python-format
+msgid "Order #%(id)s marked as %(status)s."
+msgstr "Η παραγγελία #%(id)s σημειώθηκε ως: %(status)s."
+
+#, python-format
+msgid "\"%(name)s\" updated."
+msgstr "Η κάρτα «%(name)s» ενημερώθηκε."
+
+#, python-format
+msgid "\"%(name)s\" added to the vault."
+msgstr "Η κάρτα «%(name)s» προστέθηκε στο θησαυροφυλάκιο."
+
+#, python-format
+msgid "\"%(name)s\" removed from the vault."
+msgstr "Η κάρτα «%(name)s» αφαιρέθηκε από το θησαυροφυλάκιο."
+
+msgid "You can't modify or delete your own account from here — use your profile."
+msgstr "Δεν μπορείς να τροποποιήσεις ή να διαγράψεις τον δικό σου λογαριασμό από εδώ — χρησιμοποίησε το προφίλ σου."
+
+msgid "Only a superuser can manage another superuser."
+msgstr "Μόνο ένας υπερδιαχειριστής μπορεί να διαχειριστεί άλλον υπερδιαχειριστή."
+
+msgid "Only a superuser can create superusers."
+msgstr "Μόνο ένας υπερδιαχειριστής μπορεί να δημιουργήσει υπερδιαχειριστές."
+
+#, python-format
+msgid "Account \"%(name)s\" created."
+msgstr "Ο λογαριασμός «%(name)s» δημιουργήθηκε."
+
+msgid "Only a superuser can grant superuser privileges."
+msgstr "Μόνο ένας υπερδιαχειριστής μπορεί να δώσει δικαιώματα υπερδιαχειριστή."
+
+#, python-format
+msgid "Account \"%(name)s\" updated."
+msgstr "Ο λογαριασμός «%(name)s» ενημερώθηκε."
+
+#, python-format
+msgid "\"%(name)s\" has no email address on file — add one first."
+msgstr "Ο χρήστης «%(name)s» δεν έχει καταχωρημένο email — πρόσθεσε πρώτα ένα."
+
+#, python-format
+msgid "Password reset link sent to %(email)s."
+msgstr "Ο σύνδεσμος επαναφοράς κωδικού στάλθηκε στο %(email)s."
+
+msgid "Could not send the reset email."
+msgstr "Δεν ήταν δυνατή η αποστολή του email επαναφοράς."
+
+#, python-format
+msgid "Account \"%(name)s\" deleted. Their orders are kept for the records."
+msgstr "Ο λογαριασμός «%(name)s» διαγράφηκε. Οι παραγγελίες του διατηρούνται στο αρχείο."
+
+#, python-format
+msgid "%(counter)s review"
+msgid_plural "%(counter)s reviews"
+msgstr[0] "%(counter)s αξιολόγηση"
+msgstr[1] "%(counter)s αξιολογήσεις"
+
+#, python-format
+msgid "%(counter)s card found"
+msgid_plural "%(counter)s cards found"
+msgstr[0] "Βρέθηκε %(counter)s κάρτα"
+msgstr[1] "Βρέθηκαν %(counter)s κάρτες"
+
+#, python-format
+msgid "%(counter)s item"
+msgid_plural "%(counter)s items"
+msgstr[0] "%(counter)s είδος"
+msgstr[1] "%(counter)s είδη"

@@ -1,0 +1,16 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Register" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <h1>{% translate "Join the Crew" %}</h1>
+  <form method="post" class="stacked">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-red" type="submit">{% translate "Register" %}</button>
+  </form>
+  <p style="margin-top:1rem;">{% translate "Already a member?" %} <a href="{% url 'shop:login' %}">{% translate "Log in" %}</a></p>
+</div>
+{% endblock %}

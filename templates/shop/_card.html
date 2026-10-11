@@ -1,0 +1,20 @@
+{% load i18n %}<div class="product-card">
+  <a class="art" href="{{ card.get_absolute_url }}">
+    {% if card.image %}<img src="{{ card.image.url }}" alt="{{ card.name }}">{% endif %}
+  </a>
+  <div class="info">
+    <h3><a href="{{ card.get_absolute_url }}">{{ card.name }}</a></h3>
+    <div class="meta">
+      <span class="badge {% if card.franchise == 'OP' %}badge-op{% else %}badge-di{% endif %}">{{ card.get_franchise_display }}</span>
+      <span class="badge badge-rarity">{{ card.get_rarity_display }}</span>
+    </div>
+    {% if card.num_reviews %}
+      <span class="rating-row">
+        <span class="stars"><span class="stars-fill" style="width: {% widthratio card.avg_rating 5 100 %}%">★★★★★</span>★★★★★</span>
+        <span class="rating-count">{{ card.avg_rating|floatformat:1 }} ({{ card.num_reviews }})</span>
+      </span>
+    {% endif %}
+    {% if not card.in_stock %}<span class="out-of-stock">{% translate "Sold out" %}</span>{% endif %}
+    <span class="price">${{ card.price }}</span>
+  </div>
+</div>

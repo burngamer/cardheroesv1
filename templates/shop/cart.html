@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Your Cart" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <h1>{% translate "Your Treasure Chest" %}</h1>
+  {% if cart|length %}
+    <table class="cart-table">
+      <tr><th></th><th>{% translate "Card" %}</th><th>{% translate "Qty" %}</th><th>{% translate "Price" %}</th><th>{% translate "Subtotal" %}</th><th></th></tr>
+      {% for item in cart %}
+        <tr>
+          <td>{% if item.card.image %}<img src="{{ item.card.image.url }}" alt="{{ item.card.name }}">{% endif %}</td>
+          <td><a href="{{ item.card.get_absolute_url }}">{{ item.card.name }}</a></td>
+          <td>{{ item.quantity }}</td>
+          <td>${{ item.price }}</td>
+          <td>${{ item.subtotal }}</td>
+          <td>
+            <form action="{% url 'shop:cart_remove' item.card.pk %}" method="post">
+              {% csrf_token %}
+              <button class="btn btn-ghost" type="submit" aria-label="{% translate 'Remove' %}">✕</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <p class="cart-total">{% translate "Total:" %} ${{ cart.total }}</p>
+    <p style="text-align:right; margin-top:1rem;">
+      <a class="btn btn-blue" href="{% url 'shop:card_list' %}">{% translate "Keep Shopping" %}</a>
+      <a class="btn btn-red" href="{% url 'shop:checkout' %}">{% translate "Checkout" %}</a>
+    </p>
+  {% else %}
+    <p>{% translate "Your chest is empty. Time to hunt some treasure!" %}</p>
+    <p style="margin-top:1rem;"><a class="btn btn-red" href="{% url 'shop:card_list' %}">{% translate "Browse Cards" %}</a></p>
+  {% endif %}
+</div>
+{% endblock %}

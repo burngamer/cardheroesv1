@@ -1,0 +1,23 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Checkout" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <h1>{% translate "Checkout" %}</h1>
+  <p style="margin-bottom:1rem;">{% translate "Demo checkout — no real payment is processed." %}</p>
+  <form method="post" class="stacked">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h3 style="margin:1rem 0 0.6rem;">{% translate "Order Summary" %}</h3>
+    <table class="cart-table">
+      {% for item in cart %}
+        <tr><td>{{ item.quantity }} × {{ item.card.name }}</td><td>${{ item.subtotal }}</td></tr>
+      {% endfor %}
+      <tr><td><strong>{% translate "Total" %}</strong></td><td><strong>${{ cart.total }}</strong></td></tr>
+    </table>
+    <p style="margin-top:1.2rem;"><button class="btn btn-red" type="submit">{% translate "Place Order" %}</button></p>
+  </form>
+</div>
+{% endblock %}

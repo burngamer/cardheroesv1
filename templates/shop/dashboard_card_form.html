@@ -1,0 +1,42 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% if card %}{% translate "Edit" %} {{ card.name }}{% else %}{% translate "Add Card" %}{% endif %} — Card Heroes{% endblock %}
+
+{% block content %}
+{% if storage_warning %}
+<ul class="messages"><li>⚠ {% translate "Google Drive is not configured on this server — uploaded images will be lost on the next deploy. Set the GDRIVE_* environment variables (see DEPLOY.md)." %}</li></ul>
+{% endif %}
+<div class="dash-head">
+  <h1 class="section-title">{% if card %}{% translate "Edit card" %}{% else %}{% translate "Add new card" %}{% endif %}</h1>
+  <div class="dash-actions">
+    <a class="btn btn-blue" href="{% url 'shop:dashboard_cards' %}">{% translate "Back to vault" %}</a>
+  </div>
+</div>
+
+<div class="dash-form-grid">
+  <div class="panel dash-panel">
+    <form method="post" enctype="multipart/form-data" class="stacked">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div style="display:flex; gap:0.9rem; flex-wrap:wrap; margin-top:1.2rem;">
+        <button class="btn" type="submit">{% if card %}{% translate "Save changes" %}{% else %}{% translate "Add to vault" %}{% endif %}</button>
+      </div>
+    </form>
+    {% if card %}
+      <form method="post" action="{% url 'shop:dashboard_card_delete' card.pk %}" style="margin-top:1rem;"
+            onsubmit="return confirm('{% filter escapejs %}{% blocktranslate with name=card.name %}Remove {{ name }} from the vault? This cannot be undone.{% endblocktranslate %}{% endfilter %}');">
+        {% csrf_token %}
+        <button class="btn btn-ghost" type="submit">{% translate "Delete card" %}</button>
+      </form>
+    {% endif %}
+  </div>
+
+  {% if card and card.image %}
+    <div class="panel dash-panel dash-preview">
+      <h3>{% translate "Current art" %}</h3>
+      <img src="{{ card.image.url }}" alt="{{ card.name }}">
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

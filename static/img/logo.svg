@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Card Heroes logo: superhero rat with red cape and straw hat -->
+  <defs>
+    <radialGradient id="badge" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#2b6cb0"/>
+      <stop offset="100%" stop-color="#1a365d"/>
+    </radialGradient>
+    <linearGradient id="cape" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e53e3e"/>
+      <stop offset="100%" stop-color="#9b2c2c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- badge -->
+  <circle cx="100" cy="100" r="96" fill="url(#badge)" stroke="#f6ad3b" stroke-width="6"/>
+  <!-- sunburst rays -->
+  <g stroke="#f6ad3b" stroke-width="3" opacity="0.35">
+    <line x1="100" y1="12" x2="100" y2="34"/>
+    <line x1="160" y1="34" x2="146" y2="50"/>
+    <line x1="40" y1="34" x2="54" y2="50"/>
+    <line x1="182" y1="90" x2="160" y2="94"/>
+    <line x1="18" y1="90" x2="40" y2="94"/>
+  </g>
+
+  <!-- cape billowing behind -->
+  <path d="M74 92 Q48 118 40 158 Q64 148 70 152 Q60 168 58 178 Q88 164 96 150 L120 150 Q130 168 126 180 Q150 166 152 146 Q158 120 128 92 Z" fill="url(#cape)"/>
+
+  <!-- tail -->
+  <path d="M128 150 Q160 156 164 132 Q166 118 152 118" fill="none" stroke="#b98a6a" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- legs -->
+  <rect x="86" y="138" width="10" height="26" rx="5" fill="#8c8c9e"/>
+  <rect x="106" y="138" width="10" height="26" rx="5" fill="#8c8c9e"/>
+  <ellipse cx="89" cy="166" rx="9" ry="5" fill="#6b6b7d"/>
+  <ellipse cx="113" cy="166" rx="9" ry="5" fill="#6b6b7d"/>
+
+  <!-- body -->
+  <ellipse cx="101" cy="120" rx="24" ry="28" fill="#a0a0b2"/>
+  <ellipse cx="101" cy="126" rx="14" ry="18" fill="#d9d9e3"/>
+
+  <!-- left arm: fist on hip -->
+  <path d="M80 108 Q66 116 72 128" fill="none" stroke="#a0a0b2" stroke-width="10" stroke-linecap="round"/>
+  <!-- right arm: raised fist -->
+  <path d="M120 106 Q134 92 132 72" fill="none" stroke="#a0a0b2" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="132" cy="66" r="8" fill="#8c8c9e"/>
+
+  <!-- head -->
+  <ellipse cx="100" cy="82" rx="20" ry="17" fill="#a0a0b2"/>
+  <!-- ears -->
+  <circle cx="82" cy="66" r="9" fill="#a0a0b2"/>
+  <circle cx="82" cy="66" r="5" fill="#e8b4b8"/>
+  <circle cx="118" cy="64" r="9" fill="#a0a0b2"/>
+  <circle cx="118" cy="64" r="5" fill="#e8b4b8"/>
+  <!-- snout -->
+  <ellipse cx="100" cy="90" rx="9" ry="6" fill="#d9d9e3"/>
+  <circle cx="100" cy="87" r="2.6" fill="#3b3b4f"/>
+  <!-- whiskers -->
+  <g stroke="#3b3b4f" stroke-width="1.2" opacity="0.8">
+    <line x1="90" y1="88" x2="76" y2="86"/>
+    <line x1="90" y1="91" x2="77" y2="93"/>
+    <line x1="110" y1="88" x2="124" y2="86"/>
+    <line x1="110" y1="91" x2="123" y2="93"/>
+  </g>
+  <!-- eyes: determined hero look -->
+  <path d="M88 76 L97 79" stroke="#3b3b4f" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M112 76 L103 79" stroke="#3b3b4f" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="93" cy="81" r="2.4" fill="#1a1a2e"/>
+  <circle cx="107" cy="81" r="2.4" fill="#1a1a2e"/>
+  <!-- grin -->
+  <path d="M92 96 Q100 101 108 96" fill="none" stroke="#3b3b4f" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- straw hat -->
+  <ellipse cx="100" cy="64" rx="34" ry="9" fill="#f2cf66" stroke="#c9a63e" stroke-width="2"/>
+  <path d="M76 62 Q78 42 100 42 Q122 42 124 62 Q112 68 100 68 Q88 68 76 62 Z" fill="#f2cf66" stroke="#c9a63e" stroke-width="2"/>
+  <path d="M77 59 Q100 68 123 59 L123 63 Q100 71 77 63 Z" fill="#e53e3e"/>
+
+  <!-- cape clasp -->
+  <circle cx="101" cy="102" r="4" fill="#f6ad3b"/>
+</svg>

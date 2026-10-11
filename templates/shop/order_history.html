@@ -1,0 +1,21 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "My Orders" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <h1>{% translate "My Orders" %}</h1>
+  {% for order in orders %}
+    <h3 style="margin:1rem 0 0.4rem;">{% translate "Order" %} #{{ order.pk }} — {{ order.created_at|date:"M j, Y" }} — {{ order.get_status_display }}</h3>
+    <table class="cart-table">
+      {% for item in order.items.all %}
+        <tr><td>{{ item.quantity }} × {{ item.card_name }}</td><td>${{ item.subtotal }}</td></tr>
+      {% endfor %}
+      <tr><td><strong>{% translate "Total" %}</strong></td><td><strong>${{ order.total }}</strong></td></tr>
+    </table>
+  {% empty %}
+    <p>{% translate "No orders yet." %} <a href="{% url 'shop:card_list' %}">{% translate "Start collecting!" %}</a></p>
+  {% endfor %}
+</div>
+{% endblock %}

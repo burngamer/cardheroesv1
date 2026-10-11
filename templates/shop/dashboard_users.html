@@ -1,0 +1,54 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Manage Crew" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="dash-head">
+  <h1 class="section-title">{% translate "Crew manifest" %}</h1>
+  <div class="dash-actions">
+    <a class="btn btn-gold" href="{% url 'shop:dashboard_user_add' %}">{% translate "Add account" %}</a>
+    <a class="btn btn-blue" href="{% url 'shop:dashboard' %}">{% translate "Dashboard" %}</a>
+  </div>
+</div>
+
+<form class="filter-bar" method="get">
+  <input type="text" name="q" placeholder="{% translate 'Search by username or email...' %}" value="{{ query }}">
+  <button class="btn" type="submit">{% translate "Search" %}</button>
+</form>
+
+<div class="panel dash-panel dash-wide">
+  <table class="cart-table">
+    <tr><th>{% translate "User" %}</th><th>{% translate "Email" %}</th><th>{% translate "Role" %}</th><th>{% translate "Status" %}</th><th>{% translate "Orders" %}</th><th>{% translate "Joined" %}</th><th></th></tr>
+    {% for u in users %}
+      <tr {% if not u.is_active %}class="row-soldout"{% endif %}>
+        <td>
+          <strong>{{ u.username }}</strong>{% if u.pk == user.pk %} <span class="badge badge-rarity">{% translate "You" %}</span>{% endif %}
+          {% if u.get_full_name %}<br><small>{{ u.get_full_name }}</small>{% endif %}
+        </td>
+        <td>{{ u.email|default:"—" }}</td>
+        <td>
+          {% if u.is_superuser %}<span class="badge role-super">{% translate "Superuser" %}</span>
+          {% elif u.is_staff %}<span class="badge role-staff">{% translate "Staff" %}</span>
+          {% else %}<span class="badge role-customer">{% translate "Customer" %}</span>{% endif %}
+        </td>
+        <td>{% if u.is_active %}{% translate "Active" %}{% else %}{% translate "Deactivated" %}{% endif %}</td>
+        <td>{{ u.n_orders }}</td>
+        <td>{{ u.date_joined|date:"M j, Y" }}</td>
+        <td class="row-actions">
+          {% if u.pk != user.pk %}
+            <a class="btn btn-blue btn-sm" href="{% url 'shop:dashboard_user_edit' u.pk %}">{% translate "Edit" %}</a>
+            <form method="post" action="{% url 'shop:dashboard_user_delete' u.pk %}" style="display:inline"
+                  onsubmit="return confirm('{% filter escapejs %}{% blocktranslate with name=u.username %}Delete account {{ name }}? Their orders are kept, but this cannot be undone.{% endblocktranslate %}{% endfilter %}');">
+              {% csrf_token %}
+              <button class="btn btn-ghost btn-sm" type="submit">{% translate "Delete" %}</button>
+            </form>
+          {% endif %}
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="7">{% translate "No accounts match your search." %}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

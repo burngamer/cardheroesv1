@@ -1,0 +1,56 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "My Profile" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="panel profile-panel">
+  <div class="profile-head">
+    <div class="profile-avatar">{{ user.username|first|upper }}</div>
+    <div>
+      <h1>{{ user.username }}</h1>
+      <p class="profile-since">{% translate "Crew member since" %} {{ user.date_joined|date:"F Y" }}</p>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="stat-num">{{ order_count }}</span>
+      <span class="stat-label">{% translate "Orders" %}</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">{{ cards_owned }}</span>
+      <span class="stat-label">{% translate "Cards collected" %}</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">${{ total_spent }}</span>
+      <span class="stat-label">{% translate "Total bounty spent" %}</span>
+    </div>
+  </div>
+
+  <h3 style="margin:1.6rem 0 0.8rem;">{% translate "Account details" %}</h3>
+  <form method="post" class="stacked">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn" type="submit">{% translate "Save changes" %}</button>
+  </form>
+
+  <h3 style="margin:2rem 0 0.8rem;">{% translate "Recent orders" %}</h3>
+  {% for order in orders %}
+    <table class="cart-table" style="margin-bottom:1rem;">
+      <tr>
+        <th>{% translate "Order" %} #{{ order.pk }} — {{ order.created_at|date:"M j, Y" }}</th>
+        <th style="text-align:right;">{{ order.get_status_display }}</th>
+      </tr>
+      {% for item in order.items.all %}
+        <tr><td>{{ item.quantity }} × {{ item.card_name }}</td><td style="text-align:right;">${{ item.subtotal }}</td></tr>
+      {% endfor %}
+    </table>
+  {% empty %}
+    <p>{% translate "No orders yet — your treasure log is empty." %} <a href="{% url 'shop:card_list' %}">{% translate "Start collecting!" %}</a></p>
+  {% endfor %}
+  {% if order_count > 5 %}
+    <p><a href="{% url 'shop:order_history' %}">{% blocktranslate with n=order_count %}View all {{ n }} orders{% endblocktranslate %} →</a></p>
+  {% endif %}
+</div>
+{% endblock %}

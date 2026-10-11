@@ -1,0 +1,146 @@
+{% extends 'shop/base.html' %}
+{% load static i18n %}
+
+{% block content %}
+<section class="hero-splash">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="hero-kicker">{% translate "Set sail for treasure" %}</p>
+      <h1 class="hero-title">{% translate "A world of <span>cards</span><br>and adventure<br>awaits." %}</h1>
+      <p class="hero-sub">{% translate "Rare and legendary collector's cards from One Piece and Lorcana — hunted across the Grand Line, guarded like treasure, shipped to your door." %}</p>
+      <div class="cta-row">
+        <a class="btn" href="{% url 'shop:one_piece' %}">{% translate "One Piece cards" %}</a>
+        <a class="btn btn-gold" href="{% url 'shop:lorcana' %}">{% translate "Lorcana cards" %}</a>
+      </div>
+    </div>
+    <div class="hero-cards">
+      {% with herocards=featured|default:latest %}
+        {% for card in herocards|slice:":5" %}
+          {% if card.image %}<img src="{{ card.image.url }}" alt="{{ card.name }}" onclick="location.href='{{ card.get_absolute_url }}'" style="cursor:pointer">{% endif %}
+        {% endfor %}
+      {% endwith %}
+    </div>
+  </div>
+</section>
+
+{% if latest %}
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mq-track">
+    <div class="mq-set">
+      {% for card in latest %}{% if card.image %}<a href="{{ card.get_absolute_url }}" tabindex="-1"><img src="{{ card.image.url }}" alt=""></a>{% endif %}{% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var track = document.getElementById('mq-track');
+    var set = track && track.querySelector('.mq-set');
+    if (!set || !set.children.length) return;
+    var GAP = 16;
+    var setW = set.getBoundingClientRect().width + GAP;
+    function fill() {
+      var needed = Math.max(2, Math.ceil((window.innerWidth * 2) / setW) + 1);
+      while (track.children.length < needed) track.appendChild(set.cloneNode(true));
+    }
+    fill();
+    track.style.setProperty('--loop', setW);
+    track.style.setProperty('--dur', Math.max(18, Math.round(setW / 30)));
+    window.addEventListener('resize', fill);
+  })();
+</script>
+{% endif %}
+
+{% if latest %}
+<section class="welcome">
+  <div class="chaos-box" id="chaos-box" aria-hidden="true">
+    {% for card in latest %}{% if card.image %}<img src="{{ card.image.url }}" alt="">{% endif %}{% endfor %}
+  </div>
+  <div class="welcome-copy">
+    <p class="welcome-kicker">{% translate "Welcome aboard" %}</p>
+    <h2 class="welcome-title">{% translate "A world of treasure<br>and adventure awaits." %}</h2>
+    <p>{% translate "Card Heroes is a haven for collectors — rare pulls from the Grand Line and timeless magic from the Kingdom, gathered in one vault." %}</p>
+    <p>{% translate "Build your very own collection with all of your favorite characters. Every card verified, sleeved, and ready for its next voyage." %}</p>
+    <p class="welcome-cta"><a class="btn" href="{% url 'shop:card_list' %}">{% translate "Begin your adventure" %}</a></p>
+  </div>
+</section>
+<script>
+  (function () {
+    var box = document.getElementById('chaos-box');
+    if (!box) return;
+    var imgs = [].slice.call(box.querySelectorAll('img'));
+    if (!imgs.length) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var W = 0, H = 0;
+    function size() { var r = box.getBoundingClientRect(); W = r.width; H = r.height; }
+    size();
+    window.addEventListener('resize', size);
+
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function sign() { return Math.random() < 0.5 ? -1 : 1; }
+
+    var sprites = imgs.map(function (el) {
+      var w = el.offsetWidth || 112;
+      var h = w * 4 / 3;
+      return {
+        el: el, w: w, h: h,
+        x: rnd(0, Math.max(1, W - w)),
+        y: rnd(0, Math.max(1, H - h)),
+        vx: rnd(70, 190) * sign(),
+        vy: rnd(70, 190) * sign(),
+        rz: rnd(0, 360), vrz: rnd(40, 150) * sign(),
+        ry: 0, vry: Math.random() < 0.5 ? rnd(90, 260) * sign() : 0,
+        ph: rnd(0, Math.PI * 2),
+        bend: rnd(40, 120),
+        bf: rnd(0.4, 1.6)
+      };
+    });
+
+    var paused = false, last = null;
+
+    function tick(ts) {
+      if (last === null) last = ts;
+      var dt = Math.min(0.05, (ts - last) / 1000);
+      last = ts;
+      if (!paused && !reduced && W > 0) {
+        var t = ts / 1000;
+        sprites.forEach(function (s) {
+          s.vx += Math.cos(t * s.bf + s.ph) * s.bend * dt;
+          s.vy += Math.sin(t * s.bf * 0.9 + s.ph) * s.bend * dt;
+          var sp = Math.hypot(s.vx, s.vy), MAX = 280, MIN = 50;
+          if (sp > MAX) { s.vx *= MAX / sp; s.vy *= MAX / sp; }
+          if (sp < MIN && sp > 0) { s.vx *= MIN / sp; s.vy *= MIN / sp; }
+          s.x += s.vx * dt;
+          s.y += s.vy * dt;
+          if (s.x < 0) { s.x = 0; s.vx = Math.abs(s.vx); s.vrz = -s.vrz; }
+          if (s.x > W - s.w) { s.x = W - s.w; s.vx = -Math.abs(s.vx); s.vrz = -s.vrz; }
+          if (s.y < 0) { s.y = 0; s.vy = Math.abs(s.vy); }
+          if (s.y > H - s.h) { s.y = H - s.h; s.vy = -Math.abs(s.vy); }
+          s.rz += s.vrz * dt;
+          s.ry += s.vry * dt;
+          var sc = 1 + 0.12 * Math.sin(t * 1.4 + s.ph);
+          s.el.style.transform =
+            'translate3d(' + s.x.toFixed(1) + 'px,' + s.y.toFixed(1) + 'px,0)' +
+            ' rotate(' + s.rz.toFixed(1) + 'deg)' +
+            ' rotateY(' + s.ry.toFixed(1) + 'deg)' +
+            ' scale(' + sc.toFixed(3) + ')';
+        });
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+</script>
+{% endif %}
+
+{% if featured %}
+  <h2 class="section-title">{% translate "Featured treasures" %}</h2>
+  <div class="card-grid">
+    {% for card in featured %}{% include 'shop/_card.html' %}{% endfor %}
+  </div>
+{% endif %}
+
+<h2 class="section-title">{% translate "New arrivals" %}</h2>
+<div class="card-grid">
+  {% for card in latest %}{% include 'shop/_card.html' %}{% empty %}<p>{% translate "No cards in stock yet — check back soon!" %}</p>{% endfor %}
+</div>
+{% endblock %}

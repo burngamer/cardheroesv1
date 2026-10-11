@@ -1,0 +1,41 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Manage Cards" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="dash-head">
+  <h1 class="section-title">{% translate "Card vault" %}</h1>
+  <div class="dash-actions">
+    <a class="btn btn-gold" href="{% url 'shop:dashboard_card_add' %}">{% translate "Add new card" %}</a>
+    <a class="btn btn-blue" href="{% url 'shop:dashboard' %}">{% translate "Dashboard" %}</a>
+  </div>
+</div>
+
+<form class="filter-bar" method="get">
+  <input type="text" name="q" placeholder="{% translate 'Search by name, set, or number...' %}" value="{{ query }}">
+  <button class="btn" type="submit">{% translate "Search" %}</button>
+</form>
+
+<div class="panel dash-panel dash-wide">
+  <table class="cart-table">
+    <tr><th></th><th>{% translate "Card" %}</th><th>{% translate "Franchise" %}</th><th>{% translate "Rarity" %}</th><th>{% translate "Price" %}</th><th>{% translate "Stock" %}</th><th>{% translate "Featured" %}</th><th></th></tr>
+    {% for card in cards %}
+      <tr {% if card.stock == 0 %}class="row-soldout"{% endif %}>
+        <td>{% if card.image %}<img src="{{ card.image.url }}" alt="" class="mini-art">{% endif %}</td>
+        <td><a href="{{ card.get_absolute_url }}">{{ card.name }}</a><br><small>{{ card.card_set }} {{ card.card_number }}</small></td>
+        <td>{{ card.get_franchise_display }}</td>
+        <td>{{ card.get_rarity_display }}</td>
+        <td>${{ card.price }}</td>
+        <td>{{ card.stock }}</td>
+        <td>{% if card.featured %}★{% else %}—{% endif %}</td>
+        <td class="row-actions">
+          <a class="btn btn-blue btn-sm" href="{% url 'shop:dashboard_card_edit' card.pk %}">{% translate "Edit" %}</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="8">{% translate "No cards match your search." %}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

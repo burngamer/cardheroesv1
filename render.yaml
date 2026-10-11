@@ -1,0 +1,57 @@
+# Render Blueprint — creates the web service + Postgres database in one click.
+# Render dashboard -> New -> Blueprint -> pick your GitHub repo.
+#
+# Variables marked "sync: false" are secrets: Render asks you to type them in
+# during setup. They are never stored in this file or in GitHub.
+#
+# !! The FREE Postgres plan is DELETED by Render 30 days after creation !!
+#    Before day 30, either upgrade the database to a paid plan, or point
+#    DATABASE_URL at a non-expiring Postgres (e.g. Neon). See DEPLOY.md.
+
+databases:
+  - name: card-heroes-db
+    plan: free
+    databaseName: cardheroes
+    user: cardheroes
+
+services:
+  - type: web
+    name: card-heroes
+    runtime: python
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: gunicorn cardheroes.wsgi:application
+    healthCheckPath: /healthz/
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: card-heroes-db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: "2"
+      - key: DJANGO_ADMIN_URL
+        sync: false
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
+      - key: GDRIVE_CLIENT_ID
+        sync: false
+      - key: GDRIVE_CLIENT_SECRET
+        sync: false
+      - key: GDRIVE_REFRESH_TOKEN
+        sync: false
+      - key: GDRIVE_FOLDER_ID
+        sync: false
+      - key: EMAIL_HOST
+        sync: false
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: DEFAULT_FROM_EMAIL
+        sync: false

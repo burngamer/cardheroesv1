@@ -1,0 +1,12 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Page not found" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="panel" style="margin:3rem auto; text-align:center;">
+  <h1>404</h1>
+  <p style="margin:0.8rem 0 1.4rem;">{% translate "This treasure map leads nowhere. The page you're looking for doesn't exist." %}</p>
+  <a class="btn" href="{% url 'shop:home' %}">{% translate "Back to Home" %}</a>
+</div>
+{% endblock %}

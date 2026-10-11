@@ -1,0 +1,79 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Captain's Dashboard" %} — Card Heroes{% endblock %}
+
+{% block content %}
+{% if storage_warning %}
+<ul class="messages"><li>⚠ {% translate "Google Drive is not configured on this server — uploaded images will be lost on the next deploy. Set the GDRIVE_* environment variables (see DEPLOY.md)." %}</li></ul>
+{% endif %}
+<div class="dash-head">
+  <h1 class="section-title">{% translate "Captain's dashboard" %}</h1>
+  <div class="dash-actions">
+    <a class="btn btn-gold" href="{% url 'shop:dashboard_card_add' %}">{% translate "Add new card" %}</a>
+    <a class="btn btn-blue" href="{% url 'shop:dashboard_cards' %}">{% translate "Manage cards" %}</a>
+    <a class="btn btn-red" href="{% url 'shop:dashboard_users' %}">{% translate "Manage crew" %}</a>
+    <a class="btn btn-ghost" href="{% url 'admin:index' %}" target="_blank" rel="noopener">{% translate "Django admin" %}</a>
+  </div>
+</div>
+
+<div class="stat-row dash-stats">
+  <div class="stat-box"><span class="stat-num">${{ revenue }}</span><span class="stat-label">{% translate "Revenue" %}</span></div>
+  <div class="stat-box"><span class="stat-num">{{ order_count }}</span><span class="stat-label">{% translate "Orders" %}</span></div>
+  <div class="stat-box"><span class="stat-num">{{ pending_count }}</span><span class="stat-label">{% translate "To ship" %}</span></div>
+  <div class="stat-box"><span class="stat-num">{{ shipped_count }}</span><span class="stat-label">{% translate "Shipped" %}</span></div>
+  <div class="stat-box"><span class="stat-num">{{ card_count }}</span><span class="stat-label">{% translate "Cards listed" %}</span></div>
+  <div class="stat-box"><span class="stat-num">{{ stock_total }}</span><span class="stat-label">{% translate "Units in stock" %}</span></div>
+  <div class="stat-box {% if sold_out_count %}stat-warn{% endif %}"><span class="stat-num">{{ sold_out_count }}</span><span class="stat-label">{% translate "Sold out" %}</span></div>
+</div>
+
+<div class="dash-grid">
+  <div class="panel dash-panel">
+    <h3>{% translate "Recent orders" %}</h3>
+    {% for order in recent_orders %}
+      <div class="order-row">
+        <div class="order-row-main">
+          <strong>#{{ order.pk }}</strong> — {{ order.full_name }}
+          <span class="order-meta">{{ order.created_at|date:"M j, H:i" }} · {% blocktranslate count counter=order.items.count %}{{ counter }} item{% plural %}{{ counter }} items{% endblocktranslate %} · ${{ order.total }}</span>
+        </div>
+        <form method="post" action="{% url 'shop:dashboard_order_status' order.pk %}" class="status-form">
+          {% csrf_token %}
+          <select name="status" class="status-select status-{{ order.status }}" onchange="this.form.submit()">
+            {% for value, label in statuses %}
+              <option value="{{ value }}" {% if order.status == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+          </select>
+        </form>
+      </div>
+    {% empty %}
+      <p class="dash-empty">{% translate "No orders yet. The seas are quiet." %}</p>
+    {% endfor %}
+  </div>
+
+  <div class="dash-col">
+    <div class="panel dash-panel">
+      <h3>{% translate "Top sellers" %}</h3>
+      {% for item in top_sellers %}
+        <div class="mini-row">
+          <span>{{ item.card_name }}</span>
+          <span class="mini-num">{% blocktranslate with n=item.sold %}{{ n }} sold{% endblocktranslate %} · ${{ item.revenue }}</span>
+        </div>
+      {% empty %}
+        <p class="dash-empty">{% translate "No sales yet." %}</p>
+      {% endfor %}
+    </div>
+
+    <div class="panel dash-panel">
+      <h3>{% translate "Low stock alerts" %}</h3>
+      {% for card in low_stock %}
+        <div class="mini-row {% if card.stock == 0 %}mini-danger{% endif %}">
+          <a href="{% url 'shop:dashboard_card_edit' card.pk %}">{{ card.name }}</a>
+          <span class="mini-num">{% if card.stock == 0 %}{% translate "SOLD OUT" %}{% else %}{% blocktranslate with n=card.stock %}{{ n }} left{% endblocktranslate %}{% endif %}</span>
+        </div>
+      {% empty %}
+        <p class="dash-empty">{% translate "All cards well stocked." %}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

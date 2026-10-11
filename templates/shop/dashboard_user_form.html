@@ -1,0 +1,48 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% if target %}{% translate "Edit" %} {{ target.username }}{% else %}{% translate "Add Account" %}{% endif %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="dash-head">
+  <h1 class="section-title">{% if target %}{% translate "Edit account:" %} {{ target.username }}{% else %}{% translate "Add account" %}{% endif %}</h1>
+  <div class="dash-actions">
+    <a class="btn btn-blue" href="{% url 'shop:dashboard_users' %}">{% translate "Back to crew" %}</a>
+  </div>
+</div>
+
+<div class="dash-form-grid">
+  <div class="panel dash-panel">
+    <form method="post" class="stacked">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn" type="submit" style="margin-top:0.8rem;">{% if target %}{% translate "Save changes" %}{% else %}{% translate "Create account" %}{% endif %}</button>
+    </form>
+    {% if target %}
+      <form method="post" action="{% url 'shop:dashboard_user_reset_password' target.pk %}" style="margin-top:1rem;">
+        {% csrf_token %}
+        <button class="btn btn-blue" type="submit" {% if not target.email %}title="{% translate 'No email on file' %}"{% endif %}>{% translate "Send password reset email" %}</button>
+      </form>
+      <form method="post" action="{% url 'shop:dashboard_user_delete' target.pk %}" style="margin-top:1rem;"
+            onsubmit="return confirm('{% filter escapejs %}{% blocktranslate with name=target.username %}Delete account {{ name }}? This cannot be undone.{% endblocktranslate %}{% endfilter %}');">
+        {% csrf_token %}
+        <button class="btn btn-ghost" type="submit">{% translate "Delete account" %}</button>
+      </form>
+    {% endif %}
+  </div>
+
+  {% if target %}
+    <div class="panel dash-panel">
+      <h3>{% translate "Recent orders" %}</h3>
+      {% for order in orders %}
+        <div class="mini-row">
+          <span>#{{ order.pk }} — {{ order.created_at|date:"M j, Y" }}</span>
+          <span class="mini-num">${{ order.total }} · {{ order.get_status_display }}</span>
+        </div>
+      {% empty %}
+        <p class="dash-empty">{% translate "No orders from this account." %}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Order Confirmed" %} — Card Heroes{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <h1>{% blocktranslate with id=order.pk %}Order #{{ id }} Confirmed!{% endblocktranslate %}</h1>
+  <p>{% blocktranslate with name=order.full_name %}Thanks, {{ name }}! Your treasure is being prepared for its voyage.{% endblocktranslate %}</p>
+  <h3 style="margin:1.2rem 0 0.6rem;">{% translate "Items" %}</h3>
+  <table class="cart-table">
+    {% for item in order.items.all %}
+      <tr><td>{{ item.quantity }} × {{ item.card_name }}</td><td>${{ item.subtotal }}</td></tr>
+    {% endfor %}
+    <tr><td><strong>{% translate "Total" %}</strong></td><td><strong>${{ order.total }}</strong></td></tr>
+  </table>
+  <p style="margin-top:1.2rem;"><a class="btn btn-blue" href="{% url 'shop:home' %}">{% translate "Back to Home" %}</a></p>
+</div>
+{% endblock %}

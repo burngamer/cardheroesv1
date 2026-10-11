@@ -1,0 +1,65 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }} — Card Heroes{% endblock %}
+
+{% block body_class %}{% if franchise == 'OP' %}page-onepiece{% else %}page-disney{% endif %}{% endblock %}
+
+{% block content %}
+<h1 class="section-title">{{ title }}</h1>
+
+<form class="filter-bar" method="get">
+  <div class="filter-group filter-grow">
+    <label>{% translate "Search" %}</label>
+    <input type="text" name="q" placeholder="{% translate 'Name, set, or description...' %}" value="{{ query }}">
+  </div>
+  <div class="filter-group">
+    <label>{% translate "Rarity" %}</label>
+    <select name="rarity">
+      <option value="">{% translate "All" %}</option>
+      {% for value, label in rarities %}
+        <option value="{{ value }}" {% if rarity == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>{% translate "Set" %}</label>
+    <select name="set">
+      <option value="">{% translate "All" %}</option>
+      {% for s in sets %}
+        <option value="{{ s }}" {% if card_set == s %}selected{% endif %}>{{ s }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>{% translate "Price ($)" %}</label>
+    <div class="filter-price">
+      <input type="number" name="min_price" placeholder="{% translate 'Min' %}" min="0" step="0.01" value="{{ min_price }}">
+      <span>–</span>
+      <input type="number" name="max_price" placeholder="{% translate 'Max' %}" min="0" step="0.01" value="{{ max_price }}">
+    </div>
+  </div>
+  <div class="filter-group">
+    <label>{% translate "Sort by" %}</label>
+    <select name="sort">
+      {% for value, label in sort_options %}
+        <option value="{{ value }}" {% if sort == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <label class="filter-check">
+    <input type="checkbox" name="stock" value="1" {% if in_stock %}checked{% endif %}>
+    {% translate "In stock only" %}
+  </label>
+  <div class="filter-actions">
+    <button class="btn" type="submit">{% translate "Filter" %}</button>
+    <a class="filter-clear" href="{{ request.path }}">{% translate "Clear" %}</a>
+  </div>
+</form>
+
+<p class="result-count">{% blocktranslate count counter=cards|length %}{{ counter }} card found{% plural %}{{ counter }} cards found{% endblocktranslate %}</p>
+
+<div class="card-grid">
+  {% for card in cards %}{% include 'shop/_card.html' %}{% empty %}<p>{% translate "No cards match your filters." %} <a href="{{ request.path }}">{% translate "Clear filters" %}</a></p>{% endfor %}
+</div>
+{% endblock %}
